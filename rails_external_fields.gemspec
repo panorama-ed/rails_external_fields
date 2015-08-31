@@ -1,7 +1,7 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "rails_extrenal_fields/version"
+require "rails_external_fields/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "rails_external_fields"
@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec", "~> 3.2"
   spec.add_development_dependency "rspec-rails", "~> 3.2"
   spec.add_development_dependency "rubocop", "~> 0.29"
+  spec.add_development_dependency "rubocop-rspec-focused", "~> 0.0.3"
   spec.add_development_dependency "temping", "~> 3.2"
   spec.add_development_dependency "sqlite3"
 end
