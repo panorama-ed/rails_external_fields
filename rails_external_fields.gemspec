@@ -9,12 +9,13 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Sagar Jauhari"]
   spec.email         = ["sagarjauhari@gmail.com"]
   spec.summary       = "Access attributes from an associated model."
-  spec.description   = "This concern maintains the illusion that a given object"\
-                       "has specified attributes, when those attributes are in"\
-                       "fact attached to an associated object. This is"\
-                       "particularly useful for different classes within a"\
-                       "single-table inheritance table to have access to"\
-                       "separate fields in class-specific associations."
+  spec.description   = "This concern maintains the illusion that a given "\
+                       "object has specified attributes, when those "\
+                       "attributes are in fact attached to an associated "\
+                       "object. This is particularly useful for different "\
+                       "classes within a single-table inheritance table to "\
+                       "have access to separate fields in class-specific "\
+                       "associations."
 
   spec.homepage      = "https://github.com/panorama-ed/rails-external-fields"
   spec.license       = "MIT"
