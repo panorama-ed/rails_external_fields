@@ -43,7 +43,7 @@ module ExternalFields
               else # Otherwise, build a new object.
                 # Find the class of the object we need to build.
                 klass = class_name.try(:constantize) ||
-                  self.class.reflect_on_association(assoc).klass
+                        self.class.reflect_on_association(assoc).klass
 
                 send("#{assoc}=", klass.new)
               end

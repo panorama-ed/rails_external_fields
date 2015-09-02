@@ -17,7 +17,7 @@ PreCommit:
   AuthorName:
     enabled: true
   Brakeman: # Performs static code security checking.
-    enabled: true
+    enabled: false
   BrokenSymlinks:
     enabled: true
   BundleCheck:
