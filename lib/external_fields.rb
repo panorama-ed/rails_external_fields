@@ -1,4 +1,4 @@
-require "rails_external_fields/version"
+require "external_fields/version"
 
 # This concern maintains the illusion that a given object has specified
 # attributes, when those attributes are in fact attached to an associated

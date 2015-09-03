@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path("../lib", __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require "rails_external_fields/version"
+require "external_fields/version"
 
 Gem::Specification.new do |spec|
   spec.name          = "rails_external_fields"
-  spec.version       = RailsExternalFields::VERSION
+  spec.version       = ExternalFields::VERSION
   spec.authors       = ["Sagar Jauhari"]
   spec.email         = ["sagarjauhari@gmail.com"]
   spec.summary       = "Access attributes from an associated model."
@@ -36,4 +36,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rubocop-rspec-focused", "~> 0.0.3"
   spec.add_development_dependency "temping", "~> 3.2"
   spec.add_development_dependency "sqlite3"
+  spec.add_development_dependency "byebug"
 end
