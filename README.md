@@ -9,6 +9,23 @@ table inheritance table to have access to separate fields in class-specific
 associations.
 
 ## Installation
+Add this line to your application's Gemfile:
+
+````
+gem "external_fields"
+```
+
+And then execute:
+
+```
+$ bundle
+```
+
+Or install it yourself as:
+
+```
+$ gem install external_fields
+```
 
 ## Usage
 
