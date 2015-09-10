@@ -16,6 +16,12 @@ module ExternalFields
     # object. We provide either normal or underscored getters and setters, the
     # latter allowing the defining class to use alias_method to override
     # behavior while still accessing these underlying implementations.
+    #
+    # @param [Array<Symbol>] list of external fields
+    # @param assoc [Symbol] name of the association
+    # @param class_name [String] name of the associated class
+    # @param underscore [Boolean] underscored accessor created if true
+    # @return nil
     def self.external_field(*attrs, assoc, class_name: nil, underscore: false)
       self._external_field_associations ||= []
 
@@ -23,11 +29,11 @@ module ExternalFields
         # Store the original association method for use in the overwritten one.
         original_method = instance_method(assoc)
 
-        # First, define an accessor for the associated object. Note we ensure
-        # that we only define the accessor once. Further, if `use_original`
-        # is true, we use the original Rails association accessor, which will
-        # not build a new object. Otherwise, we build a new object if one does
-        # not exist already.
+        # First, we define an accessor for the associated object.
+        # Note we ensure that we only define the accessor once. Further, if
+        # `use_original` is true, we use the original Rails association
+        # accessor, which will not build a new object. Otherwise, we build a new
+        # object if one does not exist already.
         unless self._external_field_associations.include? assoc
           define_method assoc do |use_original: false|
             if use_original

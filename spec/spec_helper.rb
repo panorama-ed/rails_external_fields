@@ -6,8 +6,6 @@ require "temping"
 ActiveRecord::Base.
   establish_connection(adapter: "sqlite3", database: ":memory:")
 
-require "byebug"
-
 require "external_fields"
 
 RSpec.configure do |config|

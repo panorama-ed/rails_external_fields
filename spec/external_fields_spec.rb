@@ -1,6 +1,6 @@
 require "spec_helper"
 
-RSpec.describe ExternalFields, :temporal do
+RSpec.describe ExternalFields do
   describe ".external_fields" do
     describe "the association" do
       Temping.create :test_class do
