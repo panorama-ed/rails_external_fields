@@ -66,9 +66,11 @@ Now you can directly call the accessors on the `Student` objects:
 => nil
 
  > s.age = 10
+ > s.age
 => 10
 
  > s.grade_level = 4
+ > s.grade_level
 => 4
 ```
 

@@ -17,11 +17,10 @@ module ExternalFields
     # latter allowing the defining class to use alias_method to override
     # behavior while still accessing these underlying implementations.
     #
-    # @param [Array<Symbol>] list of external fields
+    # @param attrs [Array<Symbol>] list of external fields
     # @param assoc [Symbol] name of the association
     # @param class_name [String] name of the associated class
     # @param underscore [Boolean] underscored accessor created if true
-    # @return nil
     def self.external_field(*attrs, assoc, class_name: nil, underscore: false)
       self._external_field_associations ||= []
 
