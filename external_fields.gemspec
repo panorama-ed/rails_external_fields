@@ -17,7 +17,7 @@ Gem::Specification.new do |spec|
                        "have access to separate fields in class-specific "\
                        "associations."
 
-  spec.homepage      = "https://github.com/panorama-ed/rails-external-fields"
+  spec.homepage      = "https://github.com/panorama-ed/rails_external_fields"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
