@@ -11,7 +11,7 @@ associations.
 ## Installation
 Add this line to your application's Gemfile:
 
-````
+```
 gem "external_fields"
 ```
 
