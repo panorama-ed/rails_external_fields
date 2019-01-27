@@ -1,6 +1,3 @@
-require "codeclimate-test-reporter"
-CodeClimate::TestReporter.start
-
 # Connect to an in-memory database for ActiveRecord tests.
 require "temping"
 ActiveRecord::Base.
