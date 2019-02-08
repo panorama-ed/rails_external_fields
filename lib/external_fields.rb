@@ -9,7 +9,7 @@ require "external_fields/version"
 module ExternalFields
   extend ActiveSupport::Concern
 
-  included do
+  included do # rubocop:disable Metrics/BlockLength
     class_attribute :_external_field_associations
 
     # Provides a getter and setter for the given attribute on the associated
@@ -24,7 +24,7 @@ module ExternalFields
     def self.external_field(*attrs, assoc, class_name: nil, underscore: false)
       self._external_field_associations ||= []
 
-      attrs.each do |attr|
+      attrs.each do |attr| # rubocop:disable Metrics/BlockLength
         # Store the original association method for use in the overwritten one.
         original_method = instance_method(assoc)
 
@@ -72,15 +72,15 @@ module ExternalFields
         # association name symbols, like: [:address, :extra_data]
         # Note that a Set could be used here but an Array was chosen for
         # familiarity since the size of the array will be relatively small.
-        unless self._external_field_associations.include? assoc
-          # We need to duplicate the array because a subclass of a model with
-          # this mixin would otherwise modify its parent class' array, since the
-          # << operator works in-place.
-          self._external_field_associations =
-            self._external_field_associations.dup
+        next if self._external_field_associations.include? assoc
 
-          self._external_field_associations << assoc
-        end
+        # We need to duplicate the array because a subclass of a model with
+        # this mixin would otherwise modify its parent class' array, since the
+        # << operator works in-place.
+        self._external_field_associations =
+          self._external_field_associations.dup
+
+        self._external_field_associations << assoc
       end
     end
   end
