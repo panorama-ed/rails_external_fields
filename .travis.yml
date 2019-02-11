@@ -1,12 +1,34 @@
-language: ruby
 rvm:
-- 2.2.1
-script: bundle exec rspec
-addons:
-  code_climate:
-    repo_token: 9f025c501f5daf9ffc6712005e4cda18ce4f6afe76c2c0913889712cefb3679e
+- 2.6
+- 2.5
+- 2.4 # Keep this in sync with .rubocop.yml
+# We test up to the latest version of Ruby here, and test these Ruby versions
+# against all support ActiveRecord versions. One test will be "duplicated"
+# below when we calculate code coverage, but I don't know how to avoid that and
+# still test all combinations of Ruby and ActiveRecord.
+script:
+- bundle exec rspec
+env:
+  matrix:
+  - ACTIVERECORD_VERSION="~> 5.2.0"
+  - ACTIVERECORD_VERSION="~> 5.1.0"
+  - ACTIVERECORD_VERSION="~> 5.0.0"
+matrix:
+  include:
+  - rvm: 2.6
+    script:
+    - bundle exec rspec
+    - gem install --no-document rubocop rubocop-rspec-focused && rubocop
+    env:
+    - CODE_COVERAGE=true
+    - ACTIVERECORD_VERSION="~> 5.2.0"
+branches:
+  only:
+  - master
+  # We always run tests for PRs. This prevents running PR tests twice (once "for
+  # the PR" and once "for the branch"), though we do want tests to run always
+  # run on master.
 notifications:
   email: false
-  hipchat:
-    rooms:
-      secure: c6XVH78Isrp/TvZsQaq2Ne442rLoUU5FX4N6PgF8jdbMIiPN5dEyURH1LgBop5grv2ZY8BwZeVjNvKVlr8V9wDoER6AV81MclV398qOiIy020dS8ahgpj7F7EO/hKU3iQX4d+3r3a5oeeWjDXdN4uPbeWR5uLXEsXDtX3HUZGxc1p/fT8xUSQufb+kZXccrYV2ryWIa7bQxWlpfAnTm/VQxl3tf5riK7vjq1TkwxvNl4Rv5TjkPFJkryyEcDtutX1jWF8O/nsxzejG604pfyZHcoDjl5erIatalHDwOxr7H1u0XYVpnldiv/L37TGkZaMWuRnCraWn6GDdmqWrpRWYqQfanpdNq9iNB8lWpsPDfnMgLQAbDnSobeeKkkQAeY0lgZjDwcP8AySjEGX/BhdIcYgs6l3C6JR3lj1P47w0KU9YgOxrRf32RGfVRfbT9cz/xqalPjVpJPOmdEoG4vC9tWZTaTBHNnmfJwrcuqnbCLh3mufVvjQD8LDo53xzKJqDguR+j7G0pKfYrwRyRbc1fwBeiVhQwmwtS8u/Swr8ImHN1r50Ma4FId+dBRkstqunfzHjchv/Om96KVPp8rL1sTMHyZvobre8OA4ovjxgQfTFIXholNtOH4Ege/ol9KxF+Sg1fBeELT8c2Jw8Hp46WduyrIcFkRBgNnSqcKnD8=
+  slack:
+    secure: entGnl4bTxXdRohlblOyXESCMpvCRNI4no7hb35EO8NRNtnfAYBaaAaKQECZdTPy/4eg9hxg9v3jGSQNXZz6PBm+Zp/ZI3PEicmHeoALbtLafOnXPugqM0lV/XZ7TYlFNn4h/SDKZDWeFBV70hkdQBjlUL09nN0Nk/VIsc0x8daPoA1ZAa3oFGdssSXObO9C52cqcDBJ16JzBjf0PUjWkTE0iR+fhuqp1o8NcQgY8kQvxuR5HXHdmL5kHPe2RRJF1aY2QWdoaosAl5yqGkJ2p+RS/5y3DQ5Bo51uFuRKvQ5tvVxvHOO7kEvNpaCMAr6r/Tov6aOIvBAegOxhX1/xOIsMEbiPf9/YT6SPSIUXyy7pOK0p+OqviXKz9tdTLPjIPqjZvPzYeXEkg0HiPdshqs02uGpo+LXm0Zbgr44NF0qgUrPbPrkcDR7m7/cHW5P59M8fAID9FJLQkolXGcoyiIdg4T08y01mcINRZUtVejykiCPGH8q4+9g6ymIFt0P0yJJWl9dAQzqdzOJypdL5VnHgeZUbf/3MkxLcRC3o9n9/YbGJlx7IsBWlMMrY2MmTiRSp1/byde3/N47mhWnb/L6teoOA/8EM3AVcedBTAtuzxBmeeK5Acp6sDUMyNOZKj/72CwvVPFmXOuZ1+IF2r0qLY3oBIyThtADTlY/lplc=

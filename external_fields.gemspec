@@ -1,9 +1,8 @@
-# coding: utf-8
-lib = File.expand_path("../lib", __FILE__)
+lib = File.expand_path("lib", __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require "external_fields/version"
 
-Gem::Specification.new do |spec|
+Gem::Specification.new do |spec| # rubocop:disable Metrics/BlockLength
   spec.name          = "external_fields"
   spec.version       = ExternalFields::VERSION
   spec.authors       = ["Sagar Jauhari"]
@@ -26,14 +25,12 @@ Gem::Specification.new do |spec|
   spec.require_paths = ["lib"]
 
   spec.add_dependency "activerecord", ">= 4.0"
+  spec.add_dependency "activesupport", ">= 4.0"
 
-  spec.add_development_dependency "bundler", "~> 1.7"
-  spec.add_development_dependency "codeclimate-test-reporter", "~> 0.4"
-  spec.add_development_dependency "overcommit", "~> 0.23"
-  spec.add_development_dependency "rspec", "~> 3.2"
-  spec.add_development_dependency "rspec-rails", "~> 3.2"
-  spec.add_development_dependency "rubocop", "~> 0.49"
-  spec.add_development_dependency "rubocop-rspec-focused", "~> 0.0"
-  spec.add_development_dependency "temping", "~> 3.2"
-  spec.add_development_dependency "sqlite3", "~> 1.3"
+  spec.add_development_dependency "bundler"
+  spec.add_development_dependency "codecov"
+  spec.add_development_dependency "rspec"
+  spec.add_development_dependency "rspec-rails"
+  spec.add_development_dependency "sqlite3", "~> 1.3.13"
+  spec.add_development_dependency "temping"
 end
