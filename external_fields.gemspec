@@ -31,6 +31,6 @@ Gem::Specification.new do |spec| # rubocop:disable Metrics/BlockLength
   spec.add_development_dependency "codecov"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "rspec-rails"
-  spec.add_development_dependency "sqlite3", "~> 1.3.13"
+  spec.add_development_dependency "sqlite3", "~> 1.4.1"
   spec.add_development_dependency "temping"
 end
