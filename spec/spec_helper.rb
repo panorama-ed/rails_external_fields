@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 if ENV["TRAVIS"] == "true" && ENV["CODE_COVERAGE"] == "true"
   require "simplecov"
   require "codecov"
