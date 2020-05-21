@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "external_fields/version"
 
 # This concern maintains the illusion that a given object has specified

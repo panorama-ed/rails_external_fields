@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 
 RSpec.describe ExternalFields do
@@ -8,7 +10,7 @@ RSpec.describe ExternalFields do
           t.string :name
         end
 
-        include ExternalFields
+        include ExternalFields # rubocop:disable RSpec/DescribedClass
 
         has_one :assoc,
                 class_name: "AssociationTestClass"
@@ -40,14 +42,14 @@ RSpec.describe ExternalFields do
         AssociationTestClass.delete_all
       end
 
-      it "should be built on first access" do
+      it "is built on first access" do
         e = TestClass.create!(name: "Hello")
 
         expect(AssociationTestClass.count).to eq(0)
         expect(e.assoc.class).to eq(AssociationTestClass)
       end
 
-      it "should be saved when the model is saved" do
+      it "is saved when the model is saved" do
         e = TestClass.create!(name: "Hello")
         expect(AssociationTestClass.count).to eq(0)
         expect(e.assoc.class).to eq(AssociationTestClass)
@@ -55,14 +57,14 @@ RSpec.describe ExternalFields do
         expect(AssociationTestClass.count).to eq(1)
       end
 
-      it "should not be created or saved if unused" do
+      it "is not created or saved if unused" do
         e = TestClass.create!
         e.name = "TEST"
         e.save!
         expect(AssociationTestClass.count).to eq(0)
       end
 
-      it "should be created if used" do
+      it "is created if used" do
         e = TestClass.create!(name: "Hello", ext_field_1: "Field1")
 
         expect(AssociationTestClass.count).to eq(1)
@@ -70,7 +72,7 @@ RSpec.describe ExternalFields do
       end
 
       context "when underscore flag is true" do
-        it "should provide underscored methods" do
+        it "provides underscored methods" do
           e = TestClass.create!(_ext_field_2: "_Field2")
 
           expect(AssociationTestClass.count).to eq(1)
@@ -78,7 +80,7 @@ RSpec.describe ExternalFields do
         end
       end
 
-      it "should provide an accessor that does not build a new object" do
+      it "provides an accessor that does not build a new object" do
         e = TestClass.new(name: "Hello")
 
         e.assoc(use_original: true) # Access without creating
