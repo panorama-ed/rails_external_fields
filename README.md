@@ -1,4 +1,4 @@
-[![Code Coverage](https://codecov.io/gh/panorama-ed/rails_external_fields/branch/master/graph/badge.svg)](https://codecov.io/gh/panorama-ed/rails_external_fields)
+[![Code Coverage](https://codecov.io/gh/panorama-ed/rails_external_fields/branch/main/graph/badge.svg)](https://codecov.io/gh/panorama-ed/rails_external_fields)
 [![Build Status](https://travis-ci.com/panorama-ed/rails_external_fields.svg)](https://travis-ci.com/panorama-ed/rails_external_fields)
 [![Inline docs](http://inch-ci.org/github/panorama-ed/rails_external_fields.png)](http://inch-ci.org/github/panorama-ed/rails_external_fields)
 [![Gem Version](https://badge.fury.io/rb/external_fields.svg)](http://badge.fury.io/rb/external_fields)
@@ -135,7 +135,7 @@ end
 
 ## Documentation
 
-We have documentation on [RubyDoc](http://www.rubydoc.info/github/panorama-ed/rails_external_fields/master).
+We have documentation on [RubyDoc](http://www.rubydoc.info/github/panorama-ed/rails_external_fields/main).
 
 ## Contributing
 
@@ -152,4 +152,4 @@ and conform to the Rubocop style specified.** We use
 ## License
 
 `ExternalFields` is released under the
-[MIT License](https://github.com/panorama-ed/rails_external_fields/blob/master/LICENSE).
+[MIT License](https://github.com/panorama-ed/rails_external_fields/blob/main/LICENSE).
