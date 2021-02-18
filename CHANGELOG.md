@@ -1,4 +1,4 @@
-# Unreleased (`master`)
+# Unreleased (`main`)
 
 Drop official support for Ruby 2.3 and below, and Rails 4, though
 these versions may continue to work.

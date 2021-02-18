@@ -23,7 +23,7 @@ module ExternalFields
     # @param assoc [Symbol] name of the association
     # @param class_name [String] name of the associated class
     # @param underscore [Boolean] underscored accessor created if true
-    def self.external_field(*attrs, assoc, class_name: nil, underscore: false)
+    def self.external_field(*attrs, assoc, class_name: nil, underscore: false) # rubocop:disable Metrics/PerceivedComplexity
       self._external_field_associations ||= []
 
       attrs.each do |attr| # rubocop:disable Metrics/BlockLength

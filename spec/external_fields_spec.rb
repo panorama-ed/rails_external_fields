@@ -15,11 +15,11 @@ RSpec.describe ExternalFields do
         has_one :assoc,
                 class_name: "AssociationTestClass"
 
-        external_field :ext_field_1,
+        external_field :ext_field1,
                        :assoc,
                        class_name: "AssociationTestClass"
 
-        external_field :ext_field_2,
+        external_field :ext_field2,
                        :assoc,
                        class_name: "AssociationTestClass",
                        underscore: true
@@ -28,8 +28,8 @@ RSpec.describe ExternalFields do
       Temping.create :association_test_class do
         with_columns do |t|
           t.integer :test_class_id
-          t.string :ext_field_1
-          t.string :ext_field_2
+          t.string :ext_field1
+          t.string :ext_field2
         end
 
         belongs_to :test_class
@@ -65,18 +65,18 @@ RSpec.describe ExternalFields do
       end
 
       it "is created if used" do
-        e = TestClass.create!(name: "Hello", ext_field_1: "Field1")
+        e = TestClass.create!(name: "Hello", ext_field1: "Field1")
 
         expect(AssociationTestClass.count).to eq(1)
-        expect(e.ext_field_1).to eq "Field1"
+        expect(e.ext_field1).to eq "Field1"
       end
 
       context "when underscore flag is true" do
         it "provides underscored methods" do
-          e = TestClass.create!(_ext_field_2: "_Field2")
+          e = TestClass.create!(_ext_field2: "_Field2")
 
           expect(AssociationTestClass.count).to eq(1)
-          expect(e._ext_field_2).to eq "_Field2"
+          expect(e._ext_field2).to eq "_Field2"
         end
       end
 
