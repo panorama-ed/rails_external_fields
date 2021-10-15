@@ -45,11 +45,12 @@ class Student < ActiveRecord::Base
   has_one :data,
           class_name: StudentData
 
-  external_field :grade_level,             # External attribute 1
-                 :age,                     # External attribute 2
-                 :credits,                 # External attribute 3
-                 :data,                    # Name of the association
-                 class_name: "StudentData" # Class name of association
+  external_field :grade_level,              # External attribute 1
+                 :age,                      # External attribute 2
+                 :credits,                  # External attribute 3
+                 :data,                     # Name of the association
+                 class_name: "StudentData", # Class name of association
+                 save_empty: false          # Don't save empty associations
 end
 ```
 
@@ -110,6 +111,31 @@ def grade_level
   end
 end
 ```
+
+### Overriding default behavior using `save_empty: false`
+**This is the recommended configuration to use for all new code.**
+
+To avoid unnecessary writes, you can rely on empty-valued class instances so
+that external associations are only saved when they have one or more attributes
+with non-default values.
+
+For any given association class, its constructor defines the attribute values
+for an "empty" instance. This means that, in the below example, retreival of
+`data` will return `StudentData.new` if there's no `StudentData` record saved.
+If `set_empty: true` were configured instead, calling `data` would still return
+`StudentData.new`, but it would also write the empty record to the database.
+
+```ruby
+  external_field :grade_level,              # External attribute 1
+                 :age,                      # External attribute 2
+                 :credits,                  # External attribute 3
+                 :data,                     # Name of the association
+                 class_name: "StudentData", # Class name of association
+                 save_empty: false          # Don't save empty associations
+```
+
+The default value for `save_empty` is `true` only for backward compatability, 
+as existing code using this gem may rely on empty rows existing in a database.
 
 ### Accessing the original association
 

@@ -1,7 +1,9 @@
-# Unreleased (`main`)
+# 0.1.3
 
-Drop official support for Ruby 2.3 and below, and Rails 4, though
-these versions may continue to work.
+- Drop official support for Ruby 2.3 and below, and Rails 4, though these
+  versions may continue to work.
+- Add optional `save_empty` parameter for external fields, making it possible to
+  access un-saved empty associated records.
 
 # 0.1.2
 
