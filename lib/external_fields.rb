@@ -23,7 +23,16 @@ module ExternalFields
     # @param assoc [Symbol] name of the association
     # @param class_name [String] name of the associated class
     # @param underscore [Boolean] underscored accessor created if true
-    def self.external_field(*attrs, assoc, class_name: nil, underscore: false) # rubocop:disable Metrics/PerceivedComplexity
+    # @param save_empty [Boolean] Specifies if empty values should be saved.
+    #                             False is recommended, but true is the current
+    #                             default to support backwards compatibility.
+    def self.external_field( # rubocop:disable Metrics/PerceivedComplexity
+      *attrs,
+      assoc,
+      class_name: nil,
+      underscore: false,
+      save_empty: true
+    )
       self._external_field_associations ||= []
 
       attrs.each do |attr| # rubocop:disable Metrics/BlockLength
@@ -37,23 +46,19 @@ module ExternalFields
         # object if one does not exist already.
         unless self._external_field_associations.include? assoc
           define_method assoc do |use_original: false|
-            if use_original
-              # Call original overwritten method
-              original_method.bind(self).call
-            else
-              # Try calling the original method to see if we get a result.
-              existing_value = original_method.bind(self).call
+            # Call original overwritten method
+            existing_value = original_method.bind(self).call
 
-              # Use existing value if one is there.
-              if existing_value
-                existing_value
-              else # Otherwise, build a new object.
-                # Find the class of the object we need to build.
-                klass = class_name.try(:constantize) ||
-                        self.class.reflect_on_association(assoc).klass
+            # Use existing value if one is there
+            if use_original || existing_value
+              existing_value
+            else # Otherwise, use an empty value
+              empty = (
+                class_name.try(:constantize) ||
+                self.class.reflect_on_association(assoc).klass
+              ).new
 
-                send("#{assoc}=", klass.new)
-              end
+              save_empty ? send("#{assoc}=", empty) : empty
             end
           end
         end
@@ -65,7 +70,25 @@ module ExternalFields
 
         # Now, define the setters for the specific attribute.
         define_method(underscore ? "_#{attr}=" : "#{attr}=") do |new_attr|
-          send(assoc).send("#{attr}=", new_attr)
+          default = (
+            class_name.try(:constantize) ||
+            self.class.reflect_on_association(assoc).klass
+          ).new
+
+          assoc_record = send(assoc)
+          if save_empty || (
+              !assoc_record.nil? &&
+              assoc_record.attributes != default.attributes
+            )
+            assoc_record.send("#{attr}=", new_attr)
+          elsif new_attr != default.send(attr)
+            send(
+              "#{assoc}=",
+              default.tap { |x| x.send("#{attr}=", new_attr) }
+            )
+          end
+
+          new_attr
         end
 
         # Add the association name to the set of external field associations.
