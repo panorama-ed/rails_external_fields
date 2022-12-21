@@ -2,7 +2,7 @@
 
 if ENV["CODE_COVERAGE"] == "true"
   require "simplecov"
-  require 'simplecov-json'
+  require "simplecov_json_formatter"
   SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
   SimpleCov.start do
     # Omit the spec directory from being counted in code coverage calculations.

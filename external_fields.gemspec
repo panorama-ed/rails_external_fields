@@ -33,7 +33,6 @@ Gem::Specification.new do |spec| # rubocop:disable Metrics/BlockLength
   spec.add_development_dependency "codecov"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "rspec-rails"
-  spec.add_development_dependency "simplecov-json"
   spec.add_development_dependency "sqlite3"
   spec.add_development_dependency "temping"
 end
