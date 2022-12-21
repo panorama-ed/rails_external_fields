@@ -3,7 +3,14 @@
 if ENV["CODE_COVERAGE"] == "true"
   require "simplecov"
   require 'simplecov-json'
-  SimpleCov.formatter = SimpleCov::Formatter::JSONFormatter
+  require 'simplecov-cobertura'
+  SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new([
+                                                                   SimpleCov::Formatter::JSONFormatter,
+                                                                   SimpleCov::Formatter::CoberturaFormatter
+                                                                 ])
+
+
+
   SimpleCov.start do
     # Omit the spec directory from being counted in code coverage calculations.
     add_filter "/spec/"
