@@ -1,7 +1,5 @@
-[![Code Coverage](https://codecov.io/gh/panorama-ed/rails_external_fields/branch/main/graph/badge.svg)](https://codecov.io/gh/panorama-ed/rails_external_fields)
-[![Build Status](https://travis-ci.com/panorama-ed/rails_external_fields.svg)](https://travis-ci.com/panorama-ed/rails_external_fields)
-[![Inline docs](http://inch-ci.org/github/panorama-ed/rails_external_fields.png)](http://inch-ci.org/github/panorama-ed/rails_external_fields)
-[![Gem Version](https://badge.fury.io/rb/external_fields.svg)](http://badge.fury.io/rb/external_fields)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/e42289cb87e44d8eb25d4255e395d9e1)](https://www.codacy.com/gh/AnthonyTestOrg/rails_external_fields/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AnthonyTestOrg/rails_external_fields&amp;utm_campaign=Badge_Grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Coverage/e42289cb87e44d8eb25d4255e395d9e1)](https://www.codacy.com/gh/AnthonyTestOrg/rails_external_fields/dashboard?utm_source=github.com&utm_medium=referral&utm_content=AnthonyTestOrg/rails_external_fields&utm_campaign=Badge_Coverage)
 
 # ExternalFields
 Create the illusion that an object has specific attributes when those attributes
