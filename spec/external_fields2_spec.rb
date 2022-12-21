@@ -10,7 +10,7 @@ RSpec.describe ExternalFields2 do
           t.string :name
         end
 
-        include ExternalFields # rubocop:disable RSpec/DescribedClass
+        include ExternalFields2 # rubocop:disable RSpec/DescribedClass
 
         has_one :assoc,
                 class_name: "AssociationTestClass"
