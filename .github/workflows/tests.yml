@@ -39,6 +39,7 @@ jobs:
       run: |
         sed -i 's@'$GITHUB_WORKSPACE'@/github/workspace/@g' .resultset.json
     - run: cp coverage/coverage.xml coverage/cobertura.xml
+    - run: cp coverage/coverage.xml cobertura.xml
     - run: cat coverage/.resultset.json
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@master
