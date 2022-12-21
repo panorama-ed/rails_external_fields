@@ -1,6 +1,8 @@
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/e42289cb87e44d8eb25d4255e395d9e1)](https://www.codacy.com/gh/AnthonyTestOrg/rails_external_fields/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=AnthonyTestOrg/rails_external_fields&amp;utm_campaign=Badge_Grade)
 [![Codacy Badge](https://app.codacy.com/project/badge/Coverage/e42289cb87e44d8eb25d4255e395d9e1)](https://www.codacy.com/gh/AnthonyTestOrg/rails_external_fields/dashboard?utm_source=github.com&utm_medium=referral&utm_content=AnthonyTestOrg/rails_external_fields&utm_campaign=Badge_Coverage)
 
+# NOTE: This is a test repo
+
 # ExternalFields
 Create the illusion that an object has specific attributes when those attributes
 actually belong to an associated object.
