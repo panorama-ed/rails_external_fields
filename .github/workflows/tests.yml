@@ -34,6 +34,8 @@ jobs:
         bundle install --jobs 4 --retry 3
 #    - run: bundle exec rubocop
     - run: bundle exec rspec
+    - run: echo $(pwd)
+    - run: ls
     - run: cat coverage/.resultset.json
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@master
