@@ -1,6 +1,6 @@
 # based on https://github.com/ruby/setup-ruby/blob/master/README.md
 name: Tests
-on: [pull_request]
+on: [push]
 jobs:
   ci:
     name: CI
