@@ -112,10 +112,7 @@ RSpec.describe ExternalFields2 do
           e.ext_field_using_empties_not_saved = nil
           e.save!
           expect(NoEmptiesAssociationTestClass2.count).to eq(0)
-
-
-
-
+        end
       end
     end
   end
