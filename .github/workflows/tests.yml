@@ -8,7 +8,7 @@ jobs:
       fail-fast: false
       matrix:
         os: [ ubuntu-latest ]
-        ruby: [ 2.5, 2.6, 2.7 ]
+        ruby: [ 2.7 ]
     runs-on: ${{ matrix.os }}
     env:
       CI: true
@@ -31,3 +31,8 @@ jobs:
         bundle install --jobs 4 --retry 3
     - run: bundle exec rubocop
     - run: bundle exec rspec
+    - name: SonarCloud Scan
+      uses: SonarSource/sonarcloud-github-action@master
+      env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
+         SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
