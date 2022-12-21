@@ -29,7 +29,7 @@ jobs:
         ruby -v
         bundle config path vendor/bundle
         bundle install --jobs 4 --retry 3
-    - run: bundle exec rubocop
+#    - run: bundle exec rubocop
     - run: bundle exec rspec
     - name: SonarCloud Scan
       uses: SonarSource/sonarcloud-github-action@master
