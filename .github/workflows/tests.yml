@@ -13,6 +13,10 @@ jobs:
     env:
       CI: true
       CODE_COVERAGE: true
+      CODACY_API_TOKEN: ${{ secrets.CODACY_API_TOKEN }}
+      CODACY_ORGANIZATION_PROVIDER: ${{ secrets.CODACY_ORGANIZATION_PROVIDER }}
+      CODACY_USERNAME: ${{ secrets.CODACY_USERNAME }}
+      CODACY_PROJECT_NAME: ${{ secrets.CODACY_PROJECT_NAME }}
     steps:
     - uses: actions/checkout@v2
       with:
@@ -46,3 +50,4 @@ jobs:
       env:
          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    - run: bash <(curl -Ls https://coverage.codacy.com/get.sh)
