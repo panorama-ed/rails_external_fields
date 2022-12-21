@@ -101,39 +101,8 @@ RSpec.describe ExternalFields2 do
       context "when empty saves are disabled" do
         it_behaves_like "A model with getters",
                         :ext_field_using_empties_not_saved,
-                        NoEmptiesAssociationTestClass2
-        it_behaves_like "A model with setters",
-                        :ext_field_using_empties_not_saved
+                        NoEmptiesAssociationTestClass
 
-        it "is not saved when the default associated model is read" do
-          e = TestClass2.create!(name: "Hello")
-          expect(e.assoc.class).to eq(AssociationTestClass2)
-          e.save!
-          expect(NoEmptiesAssociationTestClass2.count).to eq(0)
-        end
-
-        it "does not save empty values" do
-          e = TestClass2.create!
-          e.name = "TEST"
-          e.ext_field_using_empties_not_saved = nil
-          e.save!
-          expect(NoEmptiesAssociationTestClass2.count).to eq(0)
-        end
-
-        it "does save non-empty values" do
-          e = TestClass2.create!
-          e.name = "TEST"
-          e.ext_field_using_empties_not_saved = "Another test"
-          e.save!
-          expect(NoEmptiesAssociationTestClass2.count).to eq(1)
-        end
-
-        it "returns association value without id" do
-          e = TestClass2.create!
-          e.name = "TEST"
-          expect(e.no_empties_assoc).to_not be(nil)
-          expect(e.no_empties_assoc.id).to be(nil)
-        end
       end
     end
   end
