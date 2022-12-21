@@ -101,7 +101,8 @@ RSpec.describe ExternalFields2 do
       context "when empty saves are disabled" do
         it_behaves_like "A model with getters",
                         :ext_field_using_empties_not_saved,
-                        NoEmptiesAssociationTestClass
+                        NoEmptiesAssociationTestClass2
+
 
       end
     end
