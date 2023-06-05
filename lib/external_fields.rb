@@ -47,7 +47,7 @@ module ExternalFields
         unless self._external_field_associations.include? assoc
           define_method assoc do |use_original: false|
             # Call original overwritten method
-            existing_value = original_method.bind(self).call
+            existing_value = original_method.bind_call(self)
 
             # Use existing value if one is there
             if use_original || existing_value
