@@ -120,8 +120,8 @@ RSpec.describe ExternalFields do
         it "returns association value with id" do
           e = TestClass.create!
           e.name = "TEST"
-          expect(e.assoc).to_not be(nil)
-          expect(e.assoc.id).to_not be(nil)
+          expect(e.assoc).to_not be_nil
+          expect(e.assoc.id).to_not be_nil
         end
       end
 
@@ -158,8 +158,8 @@ RSpec.describe ExternalFields do
         it "returns association value without id" do
           e = TestClass.create!
           e.name = "TEST"
-          expect(e.no_empties_assoc).to_not be(nil)
-          expect(e.no_empties_assoc.id).to be(nil)
+          expect(e.no_empties_assoc).to_not be_nil
+          expect(e.no_empties_assoc.id).to be_nil
         end
       end
     end
